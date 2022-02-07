@@ -1,42 +1,53 @@
 .scatter-container {
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    justify-content: space-evenly;
+	background: #fff;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	justify-content: space-evenly;
 }
 
 .filter-containter {
-    /* flex-grow: 1; */
-    width: 10%;
+	width: 10%;
 }
 
-.graph-containter{
-    /* flex-grow: 3; */
-    width: 90%;
+.graph-containter {
+	width: 90%;
 }
 
 .scatter-graph {
-    border: 2px solid black;
-    background: lightgoldenrodyellow;
+	border: 2px solid black;
+	background: lightgoldenrodyellow;
 }
 
 .form-filter {
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
+	margin: 2%;
+	display: flex;
+	flex-direction: column;
 }
 
-.form-filter  button{
-    width: 200px;
+.form-filter button {
+	width: 200px;
 }
-
 
 select {
-    display: block;
-    width: -webkit-fill-available;
+	display: block;
+	width: -webkit-fill-available;
 }
 
-input[type="submit"] {
-    margin-top: 8%;
+.form-filter input[type='submit'] {
+	margin-top: 4%;
+	border-radius: 2px;
+	border: 1px solid darkgray;
+	width: 100%;
+	margin-left: 0px;
+	height: 31px;
+}
+
+.form-filter button {
+	margin-top: 4%;
+	border-radius: 2px;
+	border: 1px solid darkgray;
+	width: 100%;
+	margin-left: 0px;
+	height: 31px;
 }

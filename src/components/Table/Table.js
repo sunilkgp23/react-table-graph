@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import './Table.css';
+import {v4 as uuid} from 'uuid';
 
 const Table = props => {
 	const [page, setPage] = useState(1);
@@ -7,6 +8,7 @@ const Table = props => {
 
 	const [currentData, SetCurrentData] = useState([]);
 	const [filters, setFilters] = useState({});
+	const [custFilters, setCustFilters] = useState({property: 'age', critaria: '>', propValue: null});
 	const {columns, datasource, pageSize, getFiltered} = props;
 
 	useEffect(() => {
@@ -36,6 +38,60 @@ const Table = props => {
 			});
 		}
 	};
+
+	const handleChange = (event, col) => {
+		setPage(1);
+		setFilters(fil => {
+			return {...fil, [col.key]: event.target.value};
+		});
+	};
+
+	const handleFilter = event => {
+		event.preventDefault();
+
+		setPage(1);
+		setFilters(fil => {
+			return {...fil, CustomFilter: custFilters};
+		});
+	};
+
+	const handleReset = event => {
+		event.preventDefault();
+		setPage(1);
+		setFilters(res => {
+			delete res.CustomFilter;
+			return {...res};
+		});
+	};
+	const handleCustomChange = event => {
+		event.preventDefault();
+		setCustFilters(fil => {
+			return {...fil, [event.target.name]: event.target.value};
+		});
+	};
+	const comparitions = [
+		{
+			id: uuid(),
+			label: '>',
+			value: '>',
+			isDefault: true,
+		},
+		{
+			id: uuid(),
+			label: '>=',
+			value: '>=',
+		},
+		{
+			id: uuid(),
+			label: '<',
+			value: '<',
+		},
+		{
+			id: uuid(),
+			label: '<=',
+			value: '<',
+		},
+	];
 	return (
 		<div className="table-container">
 			<button disabled={page === 1} onClick={decreasePage}>
@@ -45,6 +101,34 @@ const Table = props => {
 			<button disabled={!hasMore} onClick={IncreasePage}>
 				Next
 			</button>
+
+			<form onSubmit={handleFilter} className="custom-filter">
+				<fieldset>
+					<legend>Filter:</legend>
+					<label>Property</label>
+					<select name="property" onChange={handleCustomChange}>
+						<option value="age" selected>
+							Age
+						</option>
+						<option value="accountBalance">Balance</option>
+						<option value="income">Income</option>
+					</select>
+
+					<select name="critaria" onChange={handleCustomChange}>
+						{comparitions.map(qual => {
+							return (
+								<option value={qual.value} selected={qual.isDefault}>
+									{qual.label}
+								</option>
+							);
+						})}
+					</select>
+					<input name="propValue" onChange={handleCustomChange}></input>
+
+					<input type="submit" value="submit"></input>
+					<button onClick={handleReset}>Reset</button>
+				</fieldset>
+			</form>
 
 			<table>
 				<thead>
@@ -56,7 +140,17 @@ const Table = props => {
 					<tr>
 						{columns.map(col => (
 							<th>
-								{col.isSearchable && <input className="search-box" placeholder="Enter to search" onKeyPress={event => handleSubmit(event, col)} />}
+								{col.isSearchable && col.options && (
+									<select onChange={event => handleChange(event, col)}>
+										<option value={null}>{''}</option>
+										{col.options.map(item => {
+											return <option value={item}>{item}</option>;
+										})}
+									</select>
+								)}
+								{col.isSearchable && !col.options && (
+									<input className="search-box" placeholder="Enter to search" onKeyPress={event => handleSubmit(event, col)} />
+								)}
 							</th>
 						))}
 					</tr>

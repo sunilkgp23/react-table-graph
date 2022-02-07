@@ -7,27 +7,42 @@ table,
 th,
 td {
 	border: 1px solid black;
-	/* border-collapse: collapse; */
-    border-radius: 5px;
-    text-align: center;
+	border-radius: 5px;
+	text-align: center;
 }
-
-/* td {
-    border-radius: 5px;
-} */
 
 tr:nth-child(even) {
 	background-color: #d6eeee;
 }
 
 .search-box {
-    width: inherit;
+	width: inherit;
 }
 
 button {
-    height: 31px;
-    border-radius: 9px;
-    border: 1px solid darkgray;
-    width: 77px;
-    margin: 10px;
+	height: 31px;
+	border-radius: 9px;
+	border: 1px solid darkgray;
+	width: 77px;
+	margin: 10px;
+}
+
+.custom-filter fieldset {
+	display: flex;
+}
+
+.custom-filter input[type='submit'] {
+	margin: 1px;
+	border-radius: 9px;
+	border: 1px solid darkgray;
+}
+
+.custom-filter button {
+	margin: 1px;
+	border-radius: 9px;
+	border: 1px solid darkgray;
+}
+
+.custom-filter select {
+	width: 10%;
 }

@@ -1,32 +1,44 @@
 .bar-container {
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    justify-content: space-evenly;
+	background: #fff;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	justify-content: space-evenly;
 }
 
 .filter-containter {
-    /* flex-grow: 1; */
-    width: 10%;
-    margin: 1%;
+	width: 10%;
+	margin: 1%;
 }
 
-.bargraph-containter{
-    /* flex-grow: 3; */
-    width: 90%;
+.bargraph-containter {
+	width: 90%;
 }
 
 .bar-graph {
-    border: 2px solid black;
-    background: lightgoldenrodyellow;
+	border: 2px solid black;
+	background: lightgoldenrodyellow;
 }
 
 select {
-    display: block;
-    width: -webkit-fill-available;
+	display: block;
+	width: -webkit-fill-available;
 }
 
-input[type="submit"] {
-    margin-top: 8%;
+.form-filter input[type='submit'] {
+	margin-top: 4%;
+	border-radius: 2px;
+	border: 1px solid darkgray;
+	width: 100%;
+	margin-left: 0px;
+	height: 31px;
+}
+
+.form-filter button {
+	margin-top: 4%;
+	border-radius: 2px;
+	border: 1px solid darkgray;
+	width: 100%;
+	margin-left: 0px;
+	height: 31px;
 }

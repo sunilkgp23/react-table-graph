@@ -13,9 +13,7 @@ const BarGraph = props => {
 	const [filteredData, setFilteredData] = useState([]);
 	const region = ['APAC', 'EMEA', 'LAD', 'NA'];
 	const [filters, setFilters] = useState({});
-
-	// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
+	
 	const [graphData, setGraphData] = useState({
 		labels: region,
 		datasets: [
@@ -52,12 +50,7 @@ const BarGraph = props => {
 	}, []);
 
 	const options = {
-		plugins: {
-			title: {
-				display: true,
-				text: 'Chart.js Bar Chart - Stacked',
-			},
-		},
+		
 		responsive: true,
 		interaction: {
 			mode: 'index',
@@ -68,7 +61,7 @@ const BarGraph = props => {
 	const getAverageData = records => {
 		let result = [];
 		for (let key in records) {
-			result.push(records[key].reduce((a, b) => a + +b.accountBalance.slice(2), 0) / records[key].length);
+			result.push(records[key].reduce((a, b) => a + +b.accountBalance, 0) / records[key].length);
 		}
 
 		return result;
@@ -77,7 +70,7 @@ const BarGraph = props => {
 	const getAccTenute = records => {
 		let result = [];
 		for (let key in records) {
-			let avgbal = records[key].reduce((a, b) => a + +b.accountBalance.slice(2), 0) / records[key].length;
+			let avgbal = records[key].reduce((a, b) => a + +b.accountBalance, 0) / records[key].length;
 
 			let avgTen = records[key].reduce((a, b) => a + +b.relationshipTenure, 0) / records[key].length;
 
@@ -147,6 +140,12 @@ const BarGraph = props => {
 		applyFilter(filters);
 	};
 
+	const handleReset = event => {
+		event.preventDefault();
+		setFilters({});
+		applyFilter({});
+	};
+
 	return (
 		<div className="bar-container">
 			<div className="filter-containter">
@@ -170,6 +169,7 @@ const BarGraph = props => {
 							})}
 						</select>
 						<input type="submit"></input>
+						<button onClick={handleReset}>Reset</button>
 					</fieldset>
 				</form>
 			</div>

@@ -42,7 +42,7 @@ const ScatterGraph = props => {
 				{
 					label: 'Account Balance - Tenure',
 					data: filteredData.map(rec => {
-						return {x: rec.relationshipTenure, y: rec.accountBalance.slice(2)};
+						return {x: rec.relationshipTenure, y: rec.accountBalance};
 					}),
 					backgroundColor: 'rgba(255, 99, 132, 1)',
 				},
@@ -70,7 +70,6 @@ const ScatterGraph = props => {
 						return false;
 					}
 				}
-				
 			}
 			return included;
 		});
@@ -90,6 +89,12 @@ const ScatterGraph = props => {
 		event.preventDefault();
 		console.log(filters);
 		applyFilter(filters);
+	};
+
+	const handleReset = event => {
+		event.preventDefault();
+		setFilters({});
+		applyFilter({});
 	};
 
 	return (
@@ -115,6 +120,7 @@ const ScatterGraph = props => {
 							})}
 						</select>
 						<input type="submit"></input>
+						<button onClick={handleReset}>Reset</button>
 					</fieldset>
 				</form>
 			</div>
@@ -126,13 +132,3 @@ const ScatterGraph = props => {
 };
 
 export default ScatterGraph;
-// X Axis: RelationShipTenure and YAxis: Account Balance
-// data: Array.from({length: 100}, () => ({
-// 	x: faker.datatype.number({min: -100, max: 100}),
-// 	y: faker.datatype.number({min: -100, max: 100}),
-// })),
-//  State, Qualification, Account Type
-// const accType = ['Savings', 'Credit Card', 'Loan', 'OverDraft'];
-// 		const employmentStatus = ['Active', 'Retired', 'Inactive'];
-// 		const region = ['APAC', 'EMEA', 'LAD', 'NA'];
-// 		const qualification = ['M.S', 'Phd', 'B.Tech', 'M.tech', 'Postdoc'];
