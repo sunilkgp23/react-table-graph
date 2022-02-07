@@ -1,0 +1,32 @@
+.bar-container {
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.filter-containter {
+    /* flex-grow: 1; */
+    width: 10%;
+    margin: 1%;
+}
+
+.bargraph-containter{
+    /* flex-grow: 3; */
+    width: 90%;
+}
+
+.bar-graph {
+    border: 2px solid black;
+    background: lightgoldenrodyellow;
+}
+
+select {
+    display: block;
+    width: -webkit-fill-available;
+}
+
+input[type="submit"] {
+    margin-top: 8%;
+}

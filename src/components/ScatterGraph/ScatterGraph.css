@@ -1,0 +1,42 @@
+.scatter-container {
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.filter-containter {
+    /* flex-grow: 1; */
+    width: 10%;
+}
+
+.graph-containter{
+    /* flex-grow: 3; */
+    width: 90%;
+}
+
+.scatter-graph {
+    border: 2px solid black;
+    background: lightgoldenrodyellow;
+}
+
+.form-filter {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-filter  button{
+    width: 200px;
+}
+
+
+select {
+    display: block;
+    width: -webkit-fill-available;
+}
+
+input[type="submit"] {
+    margin-top: 8%;
+}
